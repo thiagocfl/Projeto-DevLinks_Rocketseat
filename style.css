@@ -1,0 +1,186 @@
+/* resetando os padrões do navegador*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* a medida do tamanho da caixa a partir da borda */
+}
+
+/* valores padrões para a versão dark */
+:root {
+  --text-color: white;
+  --br-url: url(./assets/assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/assets/moon-stars.svg);
+}
+
+/* classe criada na tag html para alterar as cores conforme muda de dark para light */
+.light {
+  --text-color: black;
+  --br-url: url(./assets/assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; -> cobre todo o espaço visivel
+  */
+
+  /* Agrupa tudo em uma só propriedade: shorthand ou atalho */
+  /* Sintaxe -> background: color image repeat position/size */
+  background: var(--br-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px; /* funciona como um relógio da esquerda para a direita*/
+  padding: 0 24px;
+
+  /* margin-top: 56px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto; */
+}
+
+/* profile */
+#profile {
+  text-align: center;
+  /* Permite que o elemento pai defina o posicionamento dos elementos filhos, desde que eles sejam display inline*/
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto;
+}
+/* switch */
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* Links */
+
+ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex; /* cria uma linha virtual, eixo man */
+  align-items: center; /* centraliza o conteúdo no eixo X */
+  justify-content: center; /* centraliza o conteúdo no eixo Y */
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /* arredondamento da borda */
+
+  backdrop-filter: blur(4px); /* embasamento do fundo */
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /* embasamento do fundo, com prefixo para atender ao navegador safari 9 */
+
+  text-decoration: none; /* remove o sublinhado do texto */
+  font-weight: 500; /* peso da fonte conforme informado no prototipo Figma */
+
+  transition: background 0.2s; /* ajusta a transição do background ao passar o cursor*/
+
+  /* ou essa outra forma 
+  display: block;
+  text-align: center;
+  */
+}
+
+/* pseudo-seletor (efeitos ao passar o cursor) */
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* social links */
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center; /* centraliza o conteúdo no eixo X */
+  justify-content: center; /* centraliza o conteúdo no eixo Y */
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
